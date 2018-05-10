@@ -1,0 +1,20 @@
+{
+    "app": {
+        "name": "教育云数据平台",
+        "description": "新云网家校通教师web端",
+        "version":"2.1.1",
+        "SERVER_URL": "http://192.168.0.238:8090/"
+    },
+    "user": {
+        "name": "Admin",
+        "avatar": "./assets/img/avatar.jpg",
+        "email": "cipchk@qq.com"
+    },
+    "nav": [
+    	{"name":"教育大数据","router":"app.bigdata","checked":true},
+    	{"name":"资源总览","router":"app.resources"},
+    	{"name":"教学整体分析","router":"app.analysis"},
+    	{"name":"综合素质评价","router":"app.evaluate"},
+    	{"name":"校园安全","router":"app.safety"}
+    ]
+}

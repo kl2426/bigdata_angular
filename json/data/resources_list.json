@@ -1,0 +1,56 @@
+[
+    {
+        "name":"刘武胜",
+        "job":"老师",
+        "date":"2017-06-05",
+        "operate":"up",
+        "type":"音频",
+        "type_code":"resources_class",
+        "title":"《秋天》精品原创教案"
+    },
+    {
+        "name": "陈云波",
+        "job": "学生",
+        "date": "2017-06-05",
+        "operate": "up",
+        "type": "文本",
+        "type_code": "resources_text",
+        "title": "【推荐】《秋天》名师教案"
+    },
+    {
+        "name": "陈志",
+        "job": "老师",
+        "date": "2017-06-05",
+        "operate": "up",
+        "type": "视频",
+        "type_code": "resources_video",
+        "title": "【推荐】《秋天》名师课件（第二课时）"
+    },
+    {
+        "name": "谢贝贝",
+        "job": "学生",
+        "date": "2017-06-05",
+        "operate": "up",
+        "type": "图片",
+        "type_code": "resources_pic",
+        "title": "【推荐】《秋天》名师课件（第二课时）"
+    },
+    {
+        "name": "周栋",
+        "job": "辅导员",
+        "date": "2017-06-05",
+        "operate": "up",
+        "type": "课件",
+        "type_code": "resources_courseware",
+        "title": "【安阳市人民大道小学】《天地人》名校作业"
+    },
+    {
+        "name": "马锦",
+        "job": "管理员",
+        "date": "2017-06-05",
+        "operate": "up",
+        "type": "教案",
+        "type_code": "resources_lesson",
+        "title": "【原创推荐】《日月水火》随堂练习"
+    }
+]

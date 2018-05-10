@@ -1,0 +1,275 @@
+<!--   综合素质评价   -->
+<div class="m-analysis m-evaluate" ui-view>
+    <div class="row">
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">年级</label>
+            <div class="col-lg-9">
+                <ui-select ng-model="view_data.grade_item" theme="bootstrap" ng-disabled="true">
+                    <ui-select-match placeholder="选择年级">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item in view_data.grade_items | filter: $select.search">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">班级</label>
+            <div class="col-lg-9">
+                <ui-select multiple ng-model="view_data.class_item" theme="bootstrap" ng-disabled="true">
+                    <ui-select-match placeholder="选择班级">{{$item.name}}</ui-select-match>
+                    <ui-select-choices repeat="person in view_data.class_items | propsFilter: {name: $select.search, age: $select.search}">
+                        <div ng-bind-html="person.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">年度</label>
+            <div class="col-lg-9">
+                <ui-select ng-model="view_data.year_item" theme="bootstrap" ng-disabled="true">
+                    <ui-select-match placeholder="选择年度">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item in view_data.year_items | filter: $select.search">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">学期</label>
+            <div class="col-lg-9">
+                <ui-select ng-model="view_data.semester_item" theme="bootstrap" ng-disabled="true">
+                    <ui-select-match placeholder="选择考试">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item in view_data.semester_items | filter: $select.search">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">姓名</label>
+            <div class="col-lg-9">
+                <ui-select ng-model="view_data.student_item" theme="bootstrap" ng-disabled="true">
+                    <ui-select-match placeholder="选择考试">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item in view_data.student_items | filter: $select.search">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">周</label>
+            <div class="col-lg-9">
+                <ui-select ng-model="view_data.week_item" ng-change="changeWeek(view_data.week_item)" theme="bootstrap">
+                    <ui-select-match placeholder="选择考试">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item in view_data.week_items | filter: $select.search">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </div>
+
+
+    <!--   内容   -->
+    <div class="analysis-body">
+    	<!--    -->
+    	<ul class="body-tab" ng-init="eva_tab = 1">
+    		<li ng-class="{'active':eva_tab == 1}" ng-click="eva_tab = 1">
+    			<div class="m-bs-title">
+                    <i class="fa fa-circle"></i>多维度评价模式</div>
+                <div class="m-bs-title tab-title"><i class="fa fa-circle"></i>多维度评价模式</div>
+    		</li>
+    		<li ng-class="{'active':eva_tab == 2}" ng-click="eva_tab = 2">
+    			<div class="m-bs-title">
+                    <i class="fa fa-circle"></i>学情分析</div>
+                <div class="m-bs-title tab-title"><i class="fa fa-circle"></i>学情分析</div>
+    		</li>
+    	</ul>
+    	<!--   /   -->
+    	
+    	<div class="body-body">
+    		<!--    -->
+    		<div class="body-body-one" ng-class="{'active':eva_tab == 1}">
+    			<div class="clearfix">
+		            <div class="body-left">
+		                <!-- 数 -->
+		                <div class="echarts-tree">
+		                    <div id="echarts_tree" data-ng-init="echarts_tree()" style="width:870px; height: 700px;"></div>
+		                </div>
+		
+		            </div>
+		            <div class="body-right">
+		                <!--  -->
+		                <div class="row">
+		                	<div class="col-xs-6">
+		                		<div class="m-bs-title"><i class="fa fa-circle"></i>运动与健康（每千步得一分）</div>
+		                		<ul class="right-title">
+		                			<li><i></i>运动计步</li>
+		                		</ul>
+		                		<div class="echarts-pj1">
+		                			<div id="echarts_pj1" data-ng-init="echarts_pj1()" style="width: 390px; height: 200px;"></div>
+		                		</div>
+		                	</div>
+		                	<div class="col-xs-6">
+		                		<div class="m-bs-title"><i class="fa fa-circle"></i>个人素养</div>
+		                		<ul class="right-title">
+		                			<li><i></i>素质整体评价</li>
+		                		</ul>
+		                		<div class="echarts-pj1 echarts-pj2">
+		                			<div id="echarts_pj2" data-ng-init="echarts_pj2()" style="width: 390px;height: 200px;"></div>
+		                		</div>
+		                	</div>
+		                	<div class="col-xs-6">
+		                		<div class="m-bs-title"><i class="fa fa-circle"></i>交流合作与实践创新</div>
+		                		<ul class="right-title">
+		                			<li><i></i>团队协作</li>
+		                			<li><i></i>创新能力</li>
+		                		</ul>
+		                		<div class="echarts-pj1 echarts-pj3">
+		                			<div id="echarts_pj3" data-ng-init="echarts_pj3()" style="width: 390px;height: 200px;"></div>
+		                		</div>
+		                	</div>
+		                	<div class="col-xs-6">
+		                		<div class="m-bs-title"><i class="fa fa-circle"></i>学习能力</div>
+		                		<ul class="right-title">
+		                			<li><i></i>作业得分</li>
+		                		</ul>
+		                		<div class="echarts-pj1 echarts-pj4">
+		                			<div id="echarts_pj4" data-ng-init="echarts_pj4()" style="width: 390px;height: 200px;"></div>
+		                		</div>
+		                	</div>
+		                	<div class="col-xs-6">
+		                		<div class="m-bs-title"><i class="fa fa-circle"></i>道德品质</div>
+		                		<ul class="right-title">
+		                			<li><i></i>道德品质整体评价</li>
+		                		</ul>
+		                		<div class="echarts-pj1 echarts-pj5">
+		                			<div id="echarts_pj5" data-ng-init="echarts_pj5()" style="width: 390px;height: 200px;"></div>
+		                		</div>
+		                	</div>
+		                	<div class="col-xs-6">
+		                		<div class="m-bs-title"><i class="fa fa-circle"></i>表现能力</div>
+		                		<ul class="right-title">
+		                			<li><i></i>听课情况</li>
+		                			<li><i></i>课堂发言</li>
+		                		</ul>
+		                		<div class="echarts-pj1 echarts-pj6">
+		                			<div id="echarts_pj6" data-ng-init="echarts_pj6()" style="width: 390px;height: 200px;"></div>
+		                		</div>
+		                	</div>
+		                </div>
+		                
+		            </div>
+		        </div>
+    		</div>
+    		<!--   /  -->
+		
+		
+			<!--    -->
+			<div class="body-body-one" ng-class="{'active':eva_tab == 2}">
+				<div class="row one-fx">
+					<div class="one-fx-left">
+						<div class="echarts-fx">
+							<div id="echarts-xqfx">
+								<img src="img/bg-dz.png" />
+							</div>
+							<div class="fx-left-title">
+								<div class="m-bs-title"><i class="fa fa-circle"></i>进步分析</div>
+								<sapn>
+									学生需要充分理解未知数与整式的概
+念，熟悉有理化因式运算，同时合并
+同类型的方法及二次根式的概念也要
+牢记，基础扎实，在习题练习过程中
+再加深对一元一次方程解法的运用。
+								</sapn>
+								<div class="m-bs-title">推荐学习资源：</div>
+								<span>
+									1.未知数的概念详解<br>
+									2.整式的概念详解<br>
+									3.二次根式视频精讲<br>
+									4.有理数运算视频精讲<br>
+									5.一元一次方程视频精讲<br>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="one-fx-right">
+						<div class="right-one">
+							<div class="clearfix">
+								<div class="m-bs-title"><i class="fa fa-circle"></i>进步分析</div>
+								<div class="right-one-tab">
+									<i class="tab-bef"></i>
+									<div>
+										<ul>
+											<li><span>全科</span></li>
+											<li class="active"><span>数学</span></li>
+											<li><span>语文</span></li>
+											<li><span>英语</span></li>
+											<li><span>物理</span></li>
+											<li><span>化学</span></li>
+										</ul>
+									</div>
+									<i class="tab-aft"></i>
+								</div>
+							</div>
+							<div class="tab-tab">
+								<ul>
+									<li class="active"><span>本班</span></li>
+									<li><span>本年级</span></li>
+								</ul>
+								<a>参加考试的班级人数68人</a>
+							</div>
+							<div class="echarts-body">
+								<div id="echarts_jtb" data-ng-init="echarts_jtb()" style="width: 600px;height: 240px;"></div>
+							</div>
+						</div>
+						<!--   -->
+						<div class="right-two" style="margin-top: 20px;">
+							<div class="m-bs-title"><i class="fa fa-circle"></i>薄弱学科分析</div>
+							<div class="echarts-body">
+								<div id="echarts-brxk" style="margin-top: 10px;">
+									<img src="img/bg-xk.png" style="width: 600px;height: auto;" />
+								</div>
+							</div>
+						</div>
+						<!--   -->
+						<div class="right-one" style="margin-top: 40px;">
+							<div class="clearfix">
+								<div class="m-bs-title"><i class="fa fa-circle"></i>进步分析</div>
+								<div class="right-one-tab">
+									<i class="tab-bef"></i>
+									<div>
+										<ul>
+											<li><span>全科</span></li>
+											<li class="active"><span>数学</span></li>
+											<li><span>语文</span></li>
+											<li><span>英语</span></li>
+											<li><span>物理</span></li>
+											<li><span>化学</span></li>
+										</ul>
+									</div>
+									<i class="tab-aft"></i>
+								</div>
+							</div>
+							
+							<div class="tab-cs">
+								<ul>
+									<li>个人得分率<img src="img/icon/icon-zs1.png" /></li>
+									<li>班级得分率<img src="img/icon/icon-zs2.png" /></li>
+									<li>年级得分率<img src="img/icon/icon-zs3.png" /></li>
+								</ul>
+							</div>
+							<div class="echarts-body">
+								<div id="echarts_brzsd" data-ng-init="echarts_brzsd()" style="width: 600px;height: 240px;"></div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!--   /  -->
+    	</div>
+		
+        
+    </div>
+</div>

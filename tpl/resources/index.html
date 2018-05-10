@@ -1,0 +1,104 @@
+<div class="m-resources" ui-view>
+	<div class="m-bigdata-title">
+		教育资源
+	</div>
+
+	<div class="clearfix">
+		<!--   left    -->
+		<div class="resources-left">
+			<div class="m-bs-title" ng-click="pop()">
+				<i class="fa fa-circle"></i>平台资源
+			</div>
+			<div class="left-echarts">
+				<div class="bigdata-echarts" id="bigdata_echarts" data-ng-init="resources_echarts()" style="width:520px;height: 380px;"></div>
+			</div>
+			<div class="left-ul">
+				<ul>
+					<li>
+						<a>今日更新资源</a>
+						<span>{{view_data.resources_today}}</span>个
+					</li>
+					<li>
+						<a>昨日更新资源</a>
+						<span>{{view_data.resources_yesterday}}</span>个
+					</li>
+					<li>
+						<a>覆盖教材版本</a>
+						<span>{{view_data.resources_version}}</span>个
+					</li>
+					<li>
+						<a>平台资源总量</a>
+						<span>{{view_data.resources_amount}}</span>G
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="resources-tree">
+			<div class="resources-tree-title">{{view_data.resources_all}}<span>套</span></div>
+			<div class="tree-bg">
+				<img src="img/bg-tree.png" />
+				<div class="tree-one">
+					<div>
+						<div class="one" id="resources_class">
+							<div class="one-y">
+								<span>课堂<br/>实录</span>
+							</div>
+						</div>
+						<div class="one" id="resources_text">
+							<div class="one-y">
+								<span>文本</span>
+							</div>
+						</div>
+						<div class="one" id="resources_audio">
+							<div class="one-y">
+								<span>音频</span>
+							</div>
+						</div>
+						<div class="one" id="resources_video">
+							<div class="one-y">
+								<span>视频</span>
+							</div>
+						</div>
+						<div class="one" id="resources_pic">
+							<div class="one-y">
+								<span>图片</span>
+							</div>
+						</div>
+						<div class="one" id="resources_move">
+							<div class="one-y">
+								<span>动画</span>
+							</div>
+						</div>
+						<div class="one" id="resources_questions">
+							<div class="one-y">
+								<span>试题</span>
+							</div>
+						</div>
+						<div class="one" id="resources_courseware">
+							<div class="one-y">
+								<span>课件</span>
+							</div>
+						</div>
+						<div class="one" id="resources_lesson">
+							<div class="one-y">
+								<span>教案</span>
+							</div>
+						</div>
+						<div class="one" id="resources_school">
+							<div class="one-y">
+								<span>学案</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+	<!-- toaster directive -->
+	<toaster-container toaster-options="{'position-class': 'toast-bottom-right','newest-on-top':false, 'close-button':false,'icon-class':'abc','icon-classes':{'success':'toast-success toast-success-resources'}}"></toaster-container>
+	
+</div>

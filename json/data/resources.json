@@ -1,0 +1,16 @@
+{
+    "resources_class": 10,
+    "resources_text": 20,
+    "resources_audio": 30,
+    "resources_video": 40,
+    "resources_pic": 50,
+    "resources_move": 60,
+    "resources_questions": 70,
+    "resources_courseware": 80,
+    "resources_lesson": 90,
+    "resources_school": 100,
+    "resources_amount": 110,
+    "resources_today": 120,
+    "resources_yesterday": 130,
+    "resources_version": 140
+}

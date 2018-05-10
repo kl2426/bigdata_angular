@@ -1,0 +1,11 @@
+<!--
+	作者：308822989@qq.com
+	时间：2018-05-02
+	描述：nav
+-->
+	
+<div class="m-nav">
+	<ul>
+		<li ng-class="{active:$state.includes(item.router)}" ng-repeat="item in app.nav"><a ui-sref="{{item.router}}">{{item.name}}<i ng-if="$index == app.nav.length - 1" ui-fullscreen></i></a></li>
+	</ul>
+</div>

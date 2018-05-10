@@ -1,0 +1,147 @@
+<!--   教学整体分析   -->
+<div class="m-analysis" ui-view>
+    <div class="row">
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">年级</label>
+            <div class="col-lg-9">
+                <ui-select ng-model="view_data.grade_item" theme="bootstrap" ng-disabled="true">
+                    <ui-select-match placeholder="选择年级">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item in view_data.grade_items | filter: $select.search">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">班级</label>
+            <div class="col-lg-9">
+                <ui-select multiple ng-model="view_data.class_item" ng-change="changeClass(view_data.class_item)" theme="bootstrap" ng-disabled="disabled">
+                    <ui-select-match placeholder="选择班级">{{$item.name}}</ui-select-match>
+                    <ui-select-choices repeat="person in view_data.class_items | propsFilter: {name: $select.search, age: $select.search}">
+                        <div ng-bind-html="person.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">年度</label>
+            <div class="col-lg-9">
+                <ui-select ng-model="view_data.year_item" theme="bootstrap" ng-disabled="true">
+                    <ui-select-match placeholder="选择年度">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item in view_data.year_items | filter: $select.search">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">考试</label>
+            <div class="col-lg-9">
+                <ui-select ng-model="view_data.exam_item" theme="bootstrap" ng-disabled="true">
+                    <ui-select-match placeholder="选择考试">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="item in view_data.exam_items | filter: $select.search">
+                        <div ng-bind-html="item.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="analysis-top-one">
+            <label class="col-lg-3 control-label">科目</label>
+            <div class="col-lg-9">
+
+                <ui-select multiple ng-model="view_data.subject_item" theme="bootstrap" ng-disabled="true">
+                    <ui-select-match placeholder="选择科目">{{$item.name}}</ui-select-match>
+                    <ui-select-choices repeat="person in view_data.subject_items | propsFilter: {name: $select.search, age: $select.search}">
+                        <div ng-bind-html="person.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </div>
+
+
+    <!--   内容   -->
+    <div class="analysis-body">
+        <div class="clearfix">
+            <div class="body-left">
+                <div class="m-bs-title">
+                    <i class="fa fa-circle"></i>全年级学生考试总体分析</div>
+                <ul>
+                    <li>
+                        年级
+                        <i style="background-color: {{view_data.color_grade[0]}};"></i>
+                    </li>
+                    <li>
+                        分数段
+                        <i style="background-color: {{view_data.color_grade[1]}};"></i>
+                    </li>
+                    <li ng-repeat="item in view_data.class_item">
+                        {{item.name}}
+                        <i style="background-color: {{view_data.echarts_liang_color[$index]}};"></i>
+                    </li>
+                </ul>
+                <!-- 数 -->
+                <div class="echarts-tree">
+                    <div id="echarts_tree" data-ng-init="echarts_tree()" style="height: 700px;"></div>
+                </div>
+
+            </div>
+            <div class="body-right">
+                <!--  -->
+                <div class="m-bs-title">
+                    <i class="fa fa-circle"></i>全年级学生考试总体分析</div>
+                
+                <div class="analysis-liang">
+                    <ul>
+                        <li>
+                            <i style="background-color: {{view_data.echarts_liang_color[3]}};"></i>
+                            优率
+                        </li>
+                        <li>
+                            <i style="background-color: {{view_data.echarts_liang_color[2]}};"></i>
+                            良率
+                        </li>
+                        <li>
+                            <i style="background-color: {{view_data.echarts_liang_color[1]}};"></i>
+                            及格率
+                        </li>
+                        <li>
+                            <i style="background-color: {{view_data.echarts_liang_color[0]}};"></i>
+                            不及格率
+                        </li>
+                    </ul>
+                    <div class="echarts-liang">
+                        <div id="echarts_liang" data-ng-init="echarts_liang()" style="height: 260px;"></div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+                <!--      -->
+                <div class="m-bs-title">
+                    <i class="fa fa-circle"></i>群体得分分布</div>
+                
+                <div class="analysis-fengbu">
+                    <ul>
+                        <li>
+                            <i style="background-color: #ff5a8c;"></i>
+                            高分组平均分 / 平均分 / 低分组平均分
+                            <!--<b style="background-color: #e2af00;"></b>
+                            最高分-->
+                        </li>
+                        <li>
+                            <i style="background-color: #00bcde;"></i>
+                            最高分/最低分
+                            <!--<b style="background-color: #53b594;"></b>
+                            最低分-->
+                        </li>
+                    </ul>
+                    <div class="echarts-fengbu">
+                        <div id="echarts_fengbu" data-ng-init="echarts_fengbu()" style="height: 260px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

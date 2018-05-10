@@ -1,0 +1,150 @@
+{
+	"deploy":{
+		"teacher":1254,
+		"patriarch":36587,
+		"student":32487,
+		"school":45,
+		
+		"watch":1025,
+		"brand":5048,
+		"terminal":8025,
+		"machine":2569,
+		"desk":4038
+	},
+	"appliance":{
+		"teacher":11254,
+		"patriarch":36587,
+		"student":32487
+	},
+	"map":{
+		"zhangjiajie":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"changde":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"yueyang":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"yiyang":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"changsha":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"liuyang":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"xiangtan":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"zhuzhou":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"shaoyang":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"loudi":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"hengyang":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"yongzhou":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		},
+		"chenzhou":{
+			"teacher":11254,
+			"patriarch":36587,
+			"student":32487,
+			"school":4
+		}
+	},
+	"trend":{
+		"staff":[
+			{
+				"name":"手表",
+				"data":[120, 132, 101, 134, 90, 230, 210]
+			},
+			{
+				"name":"校牌",
+				"data":[220, 182, 191, 234, 290, 330, 310]
+			},
+			{
+				"name":"智慧课桌",
+				"data":[150, 232, 201, 154, 190, 330, 410]
+			},
+			{
+				"name":"透明终端",
+				"data":[320, 332, 301, 334, 390, 330, 320]
+			},
+			{
+				"name":"教学一体机",
+				"data":[820, 932, 901, 934, 1290, 1330, 1320]
+			}
+		],
+		"staff_name":["2015-1季度","2015-2季度","2015-3季度","2015-4季度","2016-1季度","2016-2季度","2016-3季度"],
+		"terminal":[
+			{
+				"name":"手表",
+				"data":[180, 132, 101, 134, 90, 230, 210]
+			},
+			{
+				"name":"校牌",
+				"data":[10, 182, 191, 234, 290, 330, 310]
+			},
+			{
+				"name":"智慧课桌",
+				"data":[150, 232, 201, 154, 190, 330, 410]
+			},
+			{
+				"name":"透明终端",
+				"data":[320, 332, 301, 334, 390, 330, 320]
+			},
+			{
+				"name":"教学一体机",
+				"data":[820, 932, 901, 934, 1290, 1330, 1320]
+			}
+		],
+		"terminal_name":["2015-1季度","2015-2季度","2015-3季度","2015-4季度","2016-1季度","2016-2季度","2016-3季度"]
+	}
+	
+	
+	
+}
