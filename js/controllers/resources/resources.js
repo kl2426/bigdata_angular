@@ -1,7 +1,8 @@
 'use strict';
 
 //   教育资源
-app.controller('resourcesCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'httpService', function ($scope, globalFn, toaster, $timeout, httpService) {
+app.controller('resourcesCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'httpService','$filter', function ($scope, globalFn, toaster, $timeout, httpService,$filter) {
+	
 	
 	$scope.view_data = {
 		//   课堂实录
@@ -48,9 +49,17 @@ app.controller('resourcesCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'h
 		pie_video:0,
 		//   试题席卷   （试题）
 		pie_questions:0,
-		//   
+		//   今天时间
+		today: (new Date()).getTime()
 
 	}
+	
+	
+	//   总量变化 
+	$scope.$watch('view_data.resources_all', function (newVal, oldVal) {
+    	//  加逗号
+    	$scope.view_data.resources_all2 = (newVal || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+    });
 
 
 	//   平台资源
@@ -64,7 +73,7 @@ app.controller('resourcesCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'h
 			textStyle: {
 				color: '#ffe404',
 				fontFamily: '微软雅黑',
-				fontSize: 34,
+				fontSize: 30,
 				fontWeight: 'bolder'
 			},
 			subtextStyle:{
@@ -85,7 +94,8 @@ app.controller('resourcesCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'h
 				radius: ['40%', '55%'],
 				label: {
 					normal: {
-						formatter: '{cc|{c}}  {ff|/} {per|{d}%} \n{hr|}\n{b|{b}}',
+						//   {cc|{c}}  {ff|/} 
+						formatter: '{per|{d}%} \n{hr|}\n{b|{b}}',
 						//backgroundColor: '#eee',
 						//borderColor: '#aaa',
 						//borderWidth: 1,
@@ -147,80 +157,91 @@ app.controller('resourcesCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'h
 		var type = item.type_code;
 		//   ID
 		var uid = globalFn.guid();
-		toaster.pop('success', item.name + ' ' + item.job, '<div><i class="icon-sun" style="width:1px;height:0;"></i><i id="' + uid + '" class="icon-sun ani-rotate"></i>' + item.date + ' ' + (item.operate === 'up' ? '上传' : '其他') + item.type + ' ' + item.title + '</div>', 60000, 'trustedHtml');
+		toaster.pop('success', item.name + ' ' + item.job, '<div><i class="icon-sun" style="width:1px;height:0;"></i><i ' + (item.operate == 'up' ? '' : 'style="display:none;"') + ' id="' + uid + '" class="icon-sun ani-rotate"></i>' + item.date + ' ' + (item.operate === 'up' ? '上传' : '下载') + item.type + ' ' + item.title + '</div>', 60000, 'trustedHtml');
+		
+		
 		
 		//   添加动画
 		$timeout(function () {
-			//   取资源树坐标
-			var offset = {
-				tree: {
-					left: jQuery("#" + type).offset().left,
-					top: jQuery("#" + type).offset().top
-				},
-				sun: {
-					left: jQuery("#" + uid).prev().offset().left,
-					top: jQuery("#" + uid).prev().offset().top
-				}
-			}
-			//   太阳与提示间隔
-			var sun_width = jQuery("#" + uid).parents('.toast').offset().left;
-			//
-			jQuery("#" + uid).animate({
-				left: offset.tree.left - offset.sun.left - (sun_width - offset.sun.left) + jQuery("#" + type).width() - 15,
-				top: offset.tree.top - offset.sun.top + jQuery("#" + type).height() - 15,
-				width: jQuery("#" + uid).width() / 2,
-				height: jQuery("#" + uid).height() / 2,
-			}, 1000,function () {
-				jQuery("#" + uid).hide();
-				//  闪现
-				jQuery("#" + type).addClass('ani-pulse');
-				$timeout(function () { jQuery("#" + type).removeClass('ani-pulse'); }, 1000);
-				//  数字加一
-				//  
-				switch (item.type_code) {
-					case 'resources_class':
-						$scope.view_data.resources_class = $scope.view_data.resources_class + 1;
-						break;
-					case 'resources_text':
-						$scope.view_data.resources_text = $scope.view_data.resources_text + 1;
-						break;
-					case 'resources_audio':
-						$scope.view_data.resources_audio = $scope.view_data.resources_audio + 1;
-						break;
-					case 'resources_video':
-						$scope.view_data.resources_video = $scope.view_data.resources_video + 1;
-						break;
-					case 'resources_pic':
-						$scope.view_data.resources_pic = $scope.view_data.resources_pic + 1;
-						break;
-					case 'resources_move':
-						$scope.view_data.resources_move = $scope.view_data.resources_move + 1;
-						break;
-					case 'resources_questions':
-						$scope.view_data.resources_questions = $scope.view_data.resources_questions + 1;
-						break;
-					case 'resources_courseware':
-						$scope.view_data.resources_courseware = $scope.view_data.resources_courseware + 1;
-						break;
-					case 'resources_lesson':
-						$scope.view_data.resources_lesson = $scope.view_data.resources_lesson + 1;
-						break;
-					case 'resources_school':
-						$scope.view_data.resources_school = $scope.view_data.resources_school + 1;
-						break;
-
-					default:
-						break;
-				}
-				//   计算总量
-				sumAll();
-				//   今日更新资源
-				$scope.view_data.resources_today = $scope.view_data.resources_today + 1;
+			
+			if(item.operate == 'up'){
 				
-				//   保存缓存
-				localStorage.setItem('resources', JSON.stringify($scope.view_data));
-
-			});
+				//   取资源树坐标
+				var offset = {
+					tree: {
+						left: jQuery("#" + type).offset().left,
+						top: jQuery("#" + type).offset().top
+					},
+					sun: {
+						left: jQuery("#" + uid).prev().offset().left,
+						top: jQuery("#" + uid).prev().offset().top
+					}
+				}
+				//   太阳与提示间隔
+				var sun_width = jQuery("#" + uid).parents('.toast').offset().left;
+				//
+				jQuery("#" + uid).animate({
+					left: offset.tree.left - offset.sun.left - (sun_width - offset.sun.left) + jQuery("#" + type).width() - 15,
+					top: offset.tree.top - offset.sun.top + jQuery("#" + type).height() - 15,
+					width: jQuery("#" + uid).width() / 2,
+					height: jQuery("#" + uid).height() / 2,
+				}, 1000,function () {
+					jQuery("#" + uid).hide();
+					//  闪现
+					jQuery("#" + type).addClass('ani-pulse');
+					$timeout(function () { jQuery("#" + type).removeClass('ani-pulse'); }, 1000);
+					//  数字加一
+					//  
+					switch (item.type_code) {
+						case 'resources_class':
+							$scope.view_data.resources_class = $scope.view_data.resources_class + 1;
+							break;
+						case 'resources_text':
+							$scope.view_data.resources_text = $scope.view_data.resources_text + 1;
+							break;
+						case 'resources_audio':
+							$scope.view_data.resources_audio = $scope.view_data.resources_audio + 1;
+							break;
+						case 'resources_video':
+							$scope.view_data.resources_video = $scope.view_data.resources_video + 1;
+							break;
+						case 'resources_pic':
+							$scope.view_data.resources_pic = $scope.view_data.resources_pic + 1;
+							break;
+						case 'resources_move':
+							$scope.view_data.resources_move = $scope.view_data.resources_move + 1;
+							break;
+						case 'resources_questions':
+							$scope.view_data.resources_questions = $scope.view_data.resources_questions + 1;
+							break;
+						case 'resources_courseware':
+							$scope.view_data.resources_courseware = $scope.view_data.resources_courseware + 1;
+							break;
+						case 'resources_lesson':
+							$scope.view_data.resources_lesson = $scope.view_data.resources_lesson + 1;
+							break;
+						case 'resources_school':
+							$scope.view_data.resources_school = $scope.view_data.resources_school + 1;
+							break;
+	
+						default:
+							break;
+					}
+					//   计算总量
+					sumAll();
+					//   今日更新资源
+					$scope.view_data.resources_today = $scope.view_data.resources_today + 1;
+					
+					//   保存缓存
+					localStorage.setItem('resources', JSON.stringify($scope.view_data));
+	
+				});
+			
+			
+			}
+			
+			
+			
 			//
 			//   重发
 			getList();
@@ -312,14 +333,51 @@ app.controller('resourcesCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'h
 	//   取实时资源
 	var getList = function () {
 			//   随机时间10秒到30秒
-			var num = Math.floor(Math.random() * 2 + 1);
+			var num = Math.floor(Math.random() * 3 + 1);
 			$timeout(function () {
 				httpService.ajaxGet(httpService.API.href + '/json/data/resources_list.json')
 					.then(function (res) {
-						//   随机数
-						var res_num = Math.floor(Math.random() * (res.length - 1) + 0);
+						//   随机数  姓名
+						var teacher_num = Math.floor(Math.random() * res.teacher_name.length + 1) - 1;
+						var student_num = Math.floor(Math.random() * res.teacher_name.length + 1) - 1;
+						var lesson_num = Math.floor(Math.random() * res.teacher_name.length + 1) - 1;
+						var up_or_dom = Math.floor(Math.random() * 2 + 1) - 1;
+						var temp_type = [
+							"课堂实录",
+							"文本",
+							"音频",
+							"视频",
+							"图片",
+							"动画",
+							"试题",
+							"课件",
+							"教案",
+							"学案",
+						];
+						var temp_type_code = [
+							"resources_class",
+							"resources_text",
+							"resources_audio",
+							"resources_video",
+							"resources_pic",
+							"resources_move",
+							"resources_questions",
+							"resources_courseware",
+							"resources_lesson",
+							"resources_school",
+						];
+						var type_num = Math.floor(Math.random() * temp_type.length + 1) - 1;
 						//   提示   
-						$scope.pop(res[res_num]);
+						var temp_obj = {
+					        "name": up_or_dom ? res.teacher_name[teacher_num] : res.teacher_name[student_num],
+					        "job": up_or_dom ? '老师' : '学生',
+					        "date": $filter('date')(new Date(), 'yyyy-MM-dd'),
+					        "operate": up_or_dom ? 'up' : 'dom',
+					        "type": temp_type[type_num],
+					        "type_code": temp_type_code[type_num],
+					        "title": res.lesson[lesson_num]
+					   };
+						$scope.pop(temp_obj);
 					});
 				//
 			}, num * 1000);
@@ -331,6 +389,13 @@ app.controller('resourcesCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'h
 		var resources_storage = localStorage.getItem('resources');
 		if(resources_storage && resources_storage.length > 0){
 			$scope.view_data = JSON.parse(resources_storage);
+			//
+			if((new Date($scope.view_data.today)).getDate() != (new Date()).getDate()){
+				$scope.view_data.resources_today = Math.floor(Math.random() * 150 + 1);
+				$scope.view_data.today = (new Date()).getTime();
+				//   保存缓存
+				localStorage.setItem('resources', JSON.stringify($scope.view_data));
+			}
 			sumAll();
 			//
 			getList();

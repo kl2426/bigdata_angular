@@ -90,7 +90,7 @@ app.controller('safetyCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'http
 
 	//   取班级年级年份等
 	var getSelect = function () {
-		httpService.ajaxGet(httpService.API.href + '/json/data/evaluate.json')
+		httpService.ajaxGet(httpService.API.href + '/json/data/safety.json')
 			.then(function (res) {
 				//
 				$scope.view_data.grade_items = res.grade;
@@ -168,7 +168,7 @@ app.controller('safetyCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'http
 	    	//
 	    	if(temp_int && Math.floor(Math.random()*(1-0+1)+0)){
 	    		temp_int = Math.floor(Math.random()*(5881-3411+1)+3411);
-	    		temp_int2 = Math.floor(Math.random()*(86-38+1)+38);
+	    		temp_int2 = Math.floor(Math.random()*(86-58+1)+48);
 	    	}else{
 	    		temp_int = temp_int + 0.000001;
 	    		temp_int2 = temp_int2 + 0.0000001;
@@ -236,7 +236,7 @@ app.controller('safetyCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'http
 		map.enableScrollWheelZoom(true);
 		map.centerAndZoom(new BMap.Point(113.004197, 28.197246),14);
 		var walking = new BMap.WalkingRoute(map, {renderOptions: {map: map, panel: "r-result", autoViewport: true}});
-		walking.search("君临天厦小区", "招商银行(长沙解放路支行)");
+		walking.search("长勘小区", "育英学校");
 	}
 	
 	

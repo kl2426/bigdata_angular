@@ -1,110 +1,110 @@
 {
 	"deploy":{
-		"teacher":1254,
-		"patriarch":36587,
-		"student":32487,
-		"school":45,
+		"teacher":7328,
+		"patriarch":25089,
+		"student":16726,
+		"school":58,
 		
 		"watch":1025,
 		"brand":5048,
 		"terminal":8025,
 		"machine":2569,
-		"desk":4038
+		"desk":1038
 	},
 	"appliance":{
-		"teacher":11254,
-		"patriarch":36587,
-		"student":32487
+		"teacher":"17,572,159",
+		"patriarch":"34,576,528",
+		"student":"5,326,704"
 	},
 	"map":{
 		"zhangjiajie":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
+			"teacher":356,
+			"patriarch":3247,
+			"student":2188,
 			"school":4
 		},
 		"changde":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
-			"school":4
+			"teacher":1168,
+			"patriarch":8185,
+			"student":5834,
+			"school":10
 		},
 		"yueyang":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
+			"teacher":564,
+			"patriarch":4755,
+			"student":3258,
 			"school":4
 		},
 		"yiyang":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
+			"teacher":487,
+			"patriarch":5253,
+			"student":3115,
 			"school":4
 		},
 		"changsha":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
-			"school":4
+			"teacher":3256,
+			"patriarch":11256,
+			"student":8652,
+			"school":20
 		},
 		"liuyang":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
-			"school":4
+			"teacher":544,
+			"patriarch":6877,
+			"student":4872,
+			"school":5
 		},
 		"xiangtan":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
+			"teacher":483,
+			"patriarch":5879,
+			"student":4845,
 			"school":4
 		},
 		"zhuzhou":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
-			"school":4
+			"teacher":557,
+			"patriarch":5847,
+			"student":3584,
+			"school":5
 		},
 		"shaoyang":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
+			"teacher":428,
+			"patriarch":5877,
+			"student":3684,
 			"school":4
 		},
 		"loudi":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
-			"school":4
+			"teacher":82,
+			"patriarch":2881,
+			"student":1982,
+			"school":1
 		},
 		"hengyang":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
-			"school":4
+			"teacher":322,
+			"patriarch":5488,
+			"student":4877,
+			"school":3
 		},
 		"yongzhou":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
-			"school":4
+			"teacher":182,
+			"patriarch":4825,
+			"student":4052,
+			"school":2
 		},
 		"chenzhou":{
-			"teacher":11254,
-			"patriarch":36587,
-			"student":32487,
-			"school":4
+			"teacher":482,
+			"patriarch":94824,
+			"student":7822,
+			"school":6
 		}
 	},
 	"trend":{
 		"staff":[
 			{
 				"name":"手表",
-				"data":[120, 132, 101, 134, 90, 230, 210]
+				"data":[0, 0, 0, 0, 0, 0, 0,210,321,458,805,952,987,1025]
 			},
 			{
 				"name":"校牌",
-				"data":[220, 182, 191, 234, 290, 330, 310]
+				"data":[0,0,0,0,0,0, 685,755,954,2688,3524,4884,4988,5048]
 			},
 			{
 				"name":"智慧课桌",
@@ -119,30 +119,30 @@
 				"data":[820, 932, 901, 934, 1290, 1330, 1320]
 			}
 		],
-		"staff_name":["2015-1季度","2015-2季度","2015-3季度","2015-4季度","2016-1季度","2016-2季度","2016-3季度"],
+		"staff_name":["2015-1季度","2015-2季度","2015-3季度","2015-4季度","2016-1季度","2016-2季度","2016-3季度","2016-4季度","2017-1季度","2017-2季度","2017-3季度","2017-4季度","2018-1季度"],
 		"terminal":[
 			{
 				"name":"手表",
-				"data":[180, 132, 101, 134, 90, 230, 210]
+				"data":[0, 0, 0, 0, 0, 0, 0,210,321,458,805,952,987,1025]
 			},
 			{
 				"name":"校牌",
-				"data":[10, 182, 191, 234, 290, 330, 310]
+				"data":[0,0,0,0,0,0, 685,755,954,2688,3524,4884,4988,5048]
 			},
 			{
 				"name":"智慧课桌",
-				"data":[150, 232, 201, 154, 190, 330, 410]
+				"data":[0,0,0,0,0,0,0,385,488,579,798,889,926,1011,1038]
 			},
 			{
 				"name":"透明终端",
-				"data":[320, 332, 301, 334, 390, 330, 320]
+				"data":[488,1025,2386,2988,3258,3585,4985,4981,5765,5862,6725,7865,8025]
 			},
 			{
 				"name":"教学一体机",
-				"data":[820, 932, 901, 934, 1290, 1330, 1320]
+				"data":[0,0,0,0,0,865,985,1526,1985,2054,2125,2355,2569]
 			}
 		],
-		"terminal_name":["2015-1季度","2015-2季度","2015-3季度","2015-4季度","2016-1季度","2016-2季度","2016-3季度"]
+		"terminal_name":["2015-1季度","2015-2季度","2015-3季度","2015-4季度","2016-1季度","2016-2季度","2016-3季度","2016-4季度","2017-1季度","2017-2季度","2017-3季度","2017-4季度","2018-1季度"]
 	}
 	
 	

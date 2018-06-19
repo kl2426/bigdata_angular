@@ -2,32 +2,32 @@
 	"log":{
 		"am":[
 			{
-				"title":"",
-				"text":"",
-				"consume":false,
-				"date":"7:31",
-				"address":"入校考勤"
-			},
-			{
 				"title":"消费6元",
-				"text":"酸奶3.5<br/>酸奶2.5",
+				"text":"酸奶3.5<br/>面包2.5",
 				"consume":true,
-				"date":"7:36",
+				"date":"7:31",
 				"address":"青园小超市"
 			},
 			{
+				"title":"何浩浩",
+				"text":"<img class='safety-line-img' src='img/user-001.png' />",
+				"consume":true,
+				"date":"7:38",
+				"address":"(入)校门口"
+			},
+			{
 				"title":"上午课程",
-				"text":"1语文&nbsp;3数学<br/>2英语&nbsp;4体育",
+				"text":"1语文&nbsp;2英语<br/>3数学&nbsp;4体育",
 				"consume":false,
-				"date":"8:00",
-				"address":"初三12班教室"
+				"date":"7:52",
+				"address":"1301班教室"
 			},
 			{
 				"title":"消费13元",
 				"text":"番茄鸡蛋套餐13",
 				"consume":true,
 				"date":"11:50",
-				"address":"第一餐厅"
+				"address":"学生食堂"
 			}
 		],
 		"pm":[
@@ -36,7 +36,7 @@
 				"text":"基准键练习",
 				"consume":false,
 				"date":"14:30",
-				"address":"微机室"
+				"address":"多媒体教室"
 			},
 			{
 				"title":"借阅",

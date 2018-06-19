@@ -1,6 +1,6 @@
 <div class="m-bigdata" ui-view>
 	<div class="m-bigdata-title">
-		教育大数据
+		<img src="img/bg-bigdata.png" />
 	</div>
 	<div class="row">
 		<div class="col-xs-5">
@@ -15,7 +15,7 @@
 						<li><i class="icon-bigdata icon-bigdata7"></i>
 							<a>学生</a><span>{{view_data.res.deploy.student}}</span><b>名</b></li>
 						<li><i class="icon-bigdata icon-bigdata8"></i>
-							<a>学校</a><span>{{view_data.res.deploy.school}}</span><b>名</b></li>
+							<a>学校</a><span>{{view_data.res.deploy.school}}</span><b>所</b></li>
 					</ul>
 					<ul>
 						<li><i class="icon-bigdata icon-bigdata4"></i>
@@ -179,11 +179,11 @@
 				<div class="m-bs-title"><i class="fa fa-circle"></i>信息化应用人次</div>
 				<ul>
 					<li><i class="icon-bigdata icon-bigdata2"></i>
-						<a>教师</a><span>{{view_data.res.appliance.teacher}}</span><b>名</b></li>
+						<a>教师</a><span>{{view_data.res.appliance.teacher}}</span><b>人次</b></li>
 					<li><i class="icon-bigdata icon-bigdata1"></i>
-						<a>家长</a><span>{{view_data.res.appliance.patriarch}}</span><b>名</b></li>
+						<a>家长</a><span>{{view_data.res.appliance.patriarch}}</span><b>人次</b></li>
 					<li><i class="icon-bigdata icon-bigdata7"></i>
-						<a>学生</a><span>{{view_data.res.appliance.student}}</span><b>名</b></li>
+						<a>学生</a><span>{{view_data.res.appliance.student}}</span><b>人次</b></li>
 				</ul>
 			</div>
 		</div>
@@ -193,20 +193,20 @@
 		<div class="m-bs-title"><i class="fa fa-circle"></i>应用趋势分析</div>
 		<div>
 			<div class="tab-container ng-isolate-scope" style="100%;">
-				<ul class="nav nav-tabs" ng-init="bigdata_tab = 1">
-					<li class="ng-isolate-scope" ng-class="{'active':bigdata_tab == 1}">
+				<ul class="nav nav-tabs" ng-init="bigdata_tab = 2">
+					<!--<li class="ng-isolate-scope" ng-class="{'active':bigdata_tab == 1}">
 						<a class="ng-binding" ng-click="bigdata_tab = 1">使用人员</a>
-					</li>
+					</li>-->
 					<li class="ng-isolate-scope" ng-class="{'active':bigdata_tab == 2}">
 						<a class="ng-binding" ng-click="bigdata_tab = 2">终端情况</a>
 					</li>
 				</ul>
 				<div class="fx-tab">
 					<div class="one" ng-class="{'active':bigdata_tab == 1}">
-						<div class="bigdata-echarts ng-scope" id="echarts_bigdata1" data-ng-init="echarts_bigdata1()" style="width: 100%; height: 417px;"></div>
+						<div class="bigdata-echarts ng-scope" id="echarts_bigdata1" data-ng-init="echarts_bigdata1()" style="width: 100%; height: 380px;"></div>
 					</div>
 					<div class="one" ng-class="{'active':bigdata_tab == 2}">
-						<div class="bigdata-echarts ng-scope" id="echarts_bigdata2" data-ng-init="echarts_bigdata2()" style="width: 100%; height: 417px;"></div>
+						<div class="bigdata-echarts ng-scope" id="echarts_bigdata2" data-ng-init="echarts_bigdata2()" style="width: 100%; height: 380px;"></div>
 					</div>
 				</div>
 			</div>

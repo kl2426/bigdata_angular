@@ -91,8 +91,67 @@ app.controller('analysisCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'ht
 	var getStudent = function () {
 		httpService.ajaxGet(httpService.API.href + '/json/data/analysis_list.json')
 			.then(function (res) {
+				var temp_name = [
+					"张清颖",
+					"毕钰清",
+					"高凌云",
+					"崔萌萌",
+					"谢贝贝",
+					"路小雨",
+					"李溪蕊",
+					"郭嘉良",
+					"郭海风",
+					"代春泥",
+					"刘静怡",
+					"塍羽佳",
+					"唐丽芙",
+					"刘子睿",
+					"吴潇潇",
+					"于咚咚",
+					"吴咨烨",
+					"张凝雨",
+					"秦子逸",
+					"王苕桦",
+					"杨乐儿",
+					"冯听云",
+					"郝佳灵",
+					"张笃笃",
+					"宋嘉美",
+					"张茂",
+					"潘晓",
+					"管芳华",
+					"覃袁冬",
+					"董夏青",
+					"杜近江",
+					"何浩浩"
+				];
+				
+				var temp_arr = [];
+				for(var i = 0; i < temp_name.length; i++){
+					var name_num = Math.floor(Math.random() * temp_name.length + 1) - 1;
+					temp_arr.push(
+						{
+					        "id":i,
+					        "name":temp_name[i],
+					        "grade":1,
+					        "class":Math.floor(Math.random() * 4 + 1),
+					        "year":1,
+					        "exam":1,
+					        "date":"2018-03-05",
+					        "chinese":Math.floor(Math.random() * 100 + 10),
+					        "math":Math.floor(Math.random() * 100 + 10),
+					        "english":Math.floor(Math.random() * 100 + 10)
+					    }
+					);
+				}
+				
+				
+				console.log(JSON.stringify(temp_arr))
+				
+				var temp_arr = JSON.parse('[{"id":0,"name":"张清颖","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":16,"math":62,"english":70},{"id":1,"name":"毕钰清","grade":1,"class":4,"year":1,"exam":1,"date":"2018-03-05","chinese":86,"math":64,"english":41},{"id":2,"name":"高凌云","grade":1,"class":4,"year":1,"exam":1,"date":"2018-03-05","chinese":45,"math":52,"english":83},{"id":3,"name":"崔萌萌","grade":1,"class":4,"year":1,"exam":1,"date":"2018-03-05","chinese":64,"math":100,"english":40},{"id":4,"name":"谢贝贝","grade":1,"class":2,"year":1,"exam":1,"date":"2018-03-05","chinese":54,"math":74,"english":90},{"id":5,"name":"路小雨","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":77,"math":76,"english":58},{"id":6,"name":"李溪蕊","grade":1,"class":2,"year":1,"exam":1,"date":"2018-03-05","chinese":98,"math":58,"english":32},{"id":7,"name":"郭嘉良","grade":1,"class":2,"year":1,"exam":1,"date":"2018-03-05","chinese":70,"math":52,"english":31},{"id":8,"name":"郭海风","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":86,"math":66,"english":80},{"id":9,"name":"代春泥","grade":1,"class":2,"year":1,"exam":1,"date":"2018-03-05","chinese":91,"math":103,"english":87},{"id":10,"name":"刘静怡","grade":1,"class":1,"year":1,"exam":1,"date":"2018-03-05","chinese":29,"math":86,"english":105},{"id":11,"name":"塍羽佳","grade":1,"class":2,"year":1,"exam":1,"date":"2018-03-05","chinese":21,"math":109,"english":47},{"id":12,"name":"唐丽芙","grade":1,"class":1,"year":1,"exam":1,"date":"2018-03-05","chinese":66,"math":37,"english":51},{"id":13,"name":"刘子睿","grade":1,"class":4,"year":1,"exam":1,"date":"2018-03-05","chinese":34,"math":26,"english":90},{"id":14,"name":"吴潇潇","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":73,"math":74,"english":44},{"id":15,"name":"于咚咚","grade":1,"class":2,"year":1,"exam":1,"date":"2018-03-05","chinese":69,"math":53,"english":54},{"id":16,"name":"吴咨烨","grade":1,"class":4,"year":1,"exam":1,"date":"2018-03-05","chinese":60,"math":108,"english":32},{"id":17,"name":"张凝雨","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":97,"math":29,"english":60},{"id":18,"name":"秦子逸","grade":1,"class":1,"year":1,"exam":1,"date":"2018-03-05","chinese":103,"math":37,"english":107},{"id":19,"name":"王苕桦","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":54,"math":21,"english":28},{"id":20,"name":"杨乐儿","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":64,"math":10,"english":73},{"id":21,"name":"冯听云","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":20,"math":91,"english":26},{"id":22,"name":"郝佳灵","grade":1,"class":1,"year":1,"exam":1,"date":"2018-03-05","chinese":105,"math":101,"english":63},{"id":23,"name":"张笃笃","grade":1,"class":1,"year":1,"exam":1,"date":"2018-03-05","chinese":15,"math":59,"english":90},{"id":24,"name":"宋嘉美","grade":1,"class":2,"year":1,"exam":1,"date":"2018-03-05","chinese":29,"math":85,"english":65},{"id":25,"name":"张茂","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":100,"math":50,"english":59},{"id":26,"name":"潘晓","grade":1,"class":1,"year":1,"exam":1,"date":"2018-03-05","chinese":46,"math":42,"english":41},{"id":27,"name":"管芳华","grade":1,"class":3,"year":1,"exam":1,"date":"2018-03-05","chinese":71,"math":32,"english":28},{"id":28,"name":"覃袁冬","grade":1,"class":4,"year":1,"exam":1,"date":"2018-03-05","chinese":12,"math":86,"english":42},{"id":29,"name":"董夏青","grade":1,"class":2,"year":1,"exam":1,"date":"2018-03-05","chinese":87,"math":107,"english":36},{"id":30,"name":"杜近江","grade":1,"class":2,"year":1,"exam":1,"date":"2018-03-05","chinese":102,"math":105,"english":64},{"id":31,"name":"何浩浩","grade":1,"class":1,"year":1,"exam":1,"date":"2018-03-05","chinese":108,"math":49,"english":54}]');
+				
 				//
-				$scope.view_data.res_student = res;
+				$scope.view_data.res_student = temp_arr;
 				//   年级change
 				$scope.changeGrade('grade','init');
 			});
@@ -213,7 +272,7 @@ app.controller('analysisCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'ht
 		}
 		//
 		$scope.view_data.filter_student = temp_arr;
-		console.log(temp_arr);
+		//console.log(temp_arr);
 		
 		//
 		$scope.echarts_liang();
@@ -238,7 +297,6 @@ app.controller('analysisCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'ht
 
 	//   bc 
 	$scope.echarts_tree = function () {
-		console.log('1')
 
 		// app.title = '力引导布局';
 
@@ -247,11 +305,11 @@ app.controller('analysisCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'ht
 		var myChart = echarts.init(element[0]);
 		
 		var categories = [];
-    for (var i = 0; i < 9; i++) {
-        categories[i] = {
-            name: '类目' + i
-        };
-    }
+	    for (var i = 0; i < 9; i++) {
+	        categories[i] = {
+	            name: '类目' + i
+	        };
+	    }
 
 		//  整理数据 
 			
@@ -308,7 +366,6 @@ app.controller('analysisCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'ht
 			links:[]
 		}
 		
-		console.log(globalFn.Rotate(0,0,10,120))
 		
 		//   年级分段树组数据
 		for(var i in temp_grade){
@@ -357,7 +414,7 @@ app.controller('analysisCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'ht
 			var temp_index = 1;
 			for(var ii in temp_grade[i]){
 				//  添加分段
-				var temp_xy = globalFn.Rotate(0,0,10,360 / Object.getOwnPropertyNames(temp_grade[i]).length * temp_index);
+				var temp_xy = globalFn.Rotate(0,0,15,360 / Object.getOwnPropertyNames(temp_grade[i]).length * temp_index);
 				graph.nodes.push({
 					attributes:{
 						modularity_class:0
@@ -391,10 +448,16 @@ app.controller('analysisCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'ht
 					target: (10000000 + temp_obj.id).toString()
 				})
 				
-				
+				//console.log('学生次数')
 				//  学生分班
 				for(var iii in temp_grade[i][ii]){
-					var temp_xy_iii = globalFn.Rotate(temp_xy.X,temp_xy.Y,5,360 / temp_grade[i][ii].length * (iii + 1));
+					//console.log('学生次数-添加')
+					//console.log(temp_grade[i][ii].length * (+iii + 1))
+					
+					var temp_xy_iii = globalFn.Rotate(temp_xy.X, temp_xy.Y, 5, 360 / temp_grade[i][ii].length * (+iii + 1));
+					
+					
+					
 					//  所在班级颜色
 					var temp_color = "#e5323e";
 					for(var iiii in $scope.view_data.class_item){
@@ -425,8 +488,8 @@ app.controller('analysisCtrl', ['$scope', 'globalFn', 'toaster', '$timeout', 'ht
 						y:temp_xy_iii.Y
 					});
 					
-					console.log('temp_xy',temp_xy)
-					console.log('temp_xy_iii',temp_xy_iii)
+					//console.log('temp_xy',temp_xy)
+					//console.log('temp_xy_iii',temp_xy_iii)
 					
 					
 					//  添加分段
